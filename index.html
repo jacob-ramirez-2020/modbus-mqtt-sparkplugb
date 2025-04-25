@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modbus to MQTT SparkplugB Gateway | NextGenScadaProgrammer</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#01A2D9',
+            accent: '#32FF00',
+            dark: '#121212',
+            muted: '#1E1E1E',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-dark text-white font-sans">
+
+<!-- Header -->
+<header class="bg-muted fixed w-full z-10 shadow">
+  <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="/" class="text-primary font-bold text-xl hover:underline">NextGenScadaProgrammer</a>
+    <div class="space-x-6 text-sm">
+      <a href="/" class="hover:text-primary">Home</a>
+      <a href="/#about" class="hover:text-primary">About</a>
+      <a href="/#projects" class="hover:text-primary">Projects</a>
+      <a href="/blogs/" class="hover:text-primary">Blog</a>
+      <a href="/#resume" class="hover:text-primary">Resume</a>
+      <a href="/#contact" class="hover:text-primary">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main class="pt-24 max-w-5xl mx-auto px-4 py-12">
+  <section id="overview" class="text-center" data-aos="fade-up">
+    <h1 class="text-4xl font-bold text-primary mb-4">Modbus to MQTT SparkplugB Gateway</h1>
+    <p class="text-gray-300 leading-relaxed mb-6">
+      A Python-based edge application that reads Modbus devices (RTU/TCP) and publishes their data to an MQTT Broker using the SparkplugB protocol. 
+      Built for rugged remote deployments with deadband filtering, buffering on disconnect, and web-based configuration coming soon.
+    </p>
+    <a href="https://github.com/jacob-ramirez-2020/modbus-mqtt-sparkplugb" target="_blank" class="px-4 py-2 bg-primary text-black font-bold rounded hover:bg-accent transition">
+      View Project on GitHub
+    </a>
+  </section>
+
+  <section id="features" class="py-12" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold mb-6 text-primary">Key Features</h2>
+    <ul class="list-disc list-inside space-y-2 text-gray-300">
+      <li>✅ Supports Modbus RTU (RS485) and Modbus TCP (Ethernet)</li>
+      <li>✅ Publishes SparkplugB-compliant MQTT payloads</li>
+      <li>✅ Web UI (in development) for dynamic configuration</li>
+      <li>✅ Deadband filtering to minimize network traffic</li>
+      <li>✅ Buffering with SQLite database on connection loss</li>
+      <li>✅ Automatic historical replay after reconnection</li>
+      <li>✅ API-based logging and runtime status configuration</li>
+    </ul>
+  </section>
+
+  <section id="architecture" class="py-12" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold mb-6 text-primary">System Architecture</h2>
+    <div class="flex justify-center">
+      <img src="/modbus-mqtt-sparkplugb/docs/assets/architecture_diagram.png" alt="Architecture Diagram" class="rounded shadow-md max-w-full h-auto" />
+    </div>
+    <p class="text-center text-gray-400 text-sm mt-2">(Diagram illustrates typical flow from Modbus devices to MQTT Broker.)</p>
+  </section>
+
+  <section id="roadmap" class="py-12" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold mb-6 text-primary">Future Roadmap</h2>
+    <ul class="list-disc list-inside space-y-2 text-gray-300">
+      <li>⚙️ Web-based Configuration Portal (dynamic web editor)</li>
+      <li>⚙️ TLS certificate upload support for secure MQTT</li>
+      <li>⚙️ Transition to file-based configurations (TOML/YAML/JSON)</li>
+      <li>⚙️ Add Docker containerization support</li>
+      <li>⚙️ Systemd/Linux service deployment options</li>
+      <li>⚙️ Siemens S7 and OPC-UA protocol integrations</li>
+    </ul>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-muted text-center py-6 text-gray-400 text-sm mt-12">
+  <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
+    <span>© 2025 Jacob Ramirez | NextGenScadaProgrammer</span>
+    <div class="flex space-x-4">
+      <a href="https://www.linkedin.com/in/jacob-ramirez-11420194/" target="_blank" aria-label="LinkedIn" class="transition transform hover:scale-110 hover:-translate-y-1 duration-300 ease-out">
+        <svg class="w-6 h-6 hover:text-primary" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.5h5V24H0V8.5zM8 8.5h4.7v2.2h.1c.7-1.2 2.3-2.4 4.8-2.4 5.1 0 6 3.3 6 7.5V24h-5v-7c0-1.7 0-3.8-2.3-3.8s-2.7 1.8-2.7 3.7V24h-5V8.5z"/>
+        </svg>
+      </a>
+      <a href="https://github.com/jacob-ramirez-2020" target="_blank" aria-label="GitHub" class="transition transform hover:scale-110 hover:-translate-y-1 duration-300 ease-out">
+        <svg class="w-6 h-6 hover:text-primary" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 .297c-6.6 0-12 5.373-12 12 0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.165c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.334-1.757-1.334-1.757-1.086-.744.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.068 1.832 2.8 1.3 3.487.997.108-.774.418-1.3.762-1.6-2.665-.3-5.466-1.335-5.466-5.933 0-1.312.467-2.385 1.235-3.222-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.553 3.285-1.23 3.285-1.23.653 1.653.242 2.873.118 3.176.77.837 1.233 1.91 1.233 3.222 0 4.61-2.8 5.628-5.475 5.922.429.369.823 1.096.823 2.212v3.285c0 .317.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>
