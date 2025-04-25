@@ -1,8 +1,23 @@
-# MQTT SparkplugB Publisher
+# Modbus to MQTT SparkplugB Transmitter
 
-This project reads simulated or acquired tag data and publishes it to an MQTT broker using the SparkplugB protocol. It supports reconnect logic, birth/death message handling, historical buffering, and deadband filtering.
+![Version](https://img.shields.io/badge/version-0.0.1-blue.svg)
+
+This project reads simulated or acquired tag data and publishes it to an MQTT broker using the **SparkplugB protocol**. It includes reconnect logic, birth/death messages, historical buffering, and tag-level deadband filtering. Configuration is stored in **SQLite**, and the system is designed for **industrial edge deployments**.
+
+> ⚠️ **Development Status**: Active  
+> Version `0.0.1` — this project is in early development and not yet considered production-ready.  
+> Interfaces, config structure, and MQTT payloads may change.
+
+---
+
+## 📊 System Architecture
+
+![System Architecture](docs/assets/architecture_diagram.png)
+
+---
 
 ## 📁 Project Structure
+
 ```
 - mqtt/
   - config.py              # Load broker and project settings from SQLite
@@ -30,7 +45,10 @@ This project reads simulated or acquired tag data and publishes it to an MQTT br
     - properties.py        # Helper for reading config properties
 ```
 
+---
+
 ## 🔁 Module Dependencies
+
 ```mermaid
 graph TD
   main --> mqtt_client
@@ -43,33 +61,75 @@ graph TD
   tag_manager --> database
 ```
 
+---
+
 ## ✅ Features
-- SparkplugB compliant (NBIRTH, DBIRTH, DDATA, NDEATH, etc.)
-- SQLite-based tag/topic configuration
-- Historical buffering and replay after reconnect
-- Automatic reconnect watchdog
-- Deadband filtering per tag
+
+- 📡 SparkplugB-compliant (NBIRTH, DBIRTH, DDATA, NDEATH, etc.)
+- 🗂️ SQLite-based configuration for tags, topics, and brokers
+- 🧠 Tag-level deadband and bypass control
+- 📦 Buffered MQTT publishing with historical replay
+- 🔁 Automatic reconnect watchdog
+- 📈 API-driven logging configuration
+
+---
 
 ## ▶️ Getting Started
+
 ```bash
 pip install -r requirements.txt
 python main.py
 ```
 
-Ensure `config.db` is populated with MQTT broker settings and topic configurations.
-
-✅ Ready for Production
-The following endpoints are now complete and documented:
-
-Endpoint	Method	Description
-/api/logs/max_size	POST	Set max log file size (bytes)
-/api/logs/max_files	POST	Set number of log file backups
-/api/logs/level	POST	Set the logging level (e.g. DEBUG)
-/api/logs/config	GET	Get current log config
-/api/logs/tail?lines=50	GET	Return the last N lines of log file
-/api/logs/files	GET	List all .log files
-/api/logs/download/<filename>	GET	Download a specific log file
-
+Ensure `config.db` is populated with:
+- MQTT broker settings
+- Tag and topic mappings
+- Deadband thresholds
 
 ---
-_Designed for industrial IoT applications using Cirrus Link SparkplugB and Ignition._
+
+## 🌐 Logging API (Complete)
+
+| Endpoint                     | Method | Description                              |
+|-----------------------------|--------|------------------------------------------|
+| `/api/logs/max_size`        | POST   | Set max log file size (bytes)            |
+| `/api/logs/max_files`       | POST   | Set number of log file backups           |
+| `/api/logs/level`           | POST   | Set log level (e.g. DEBUG, INFO)         |
+| `/api/logs/config`          | GET    | View current log configuration           |
+| `/api/logs/tail?lines=50`   | GET    | Return last N lines of log file          |
+| `/api/logs/files`           | GET    | List all `.log` files                    |
+| `/api/logs/download/<file>` | GET    | Download specific log file               |
+
+---
+
+## 🛣️ Roadmap
+
+- [x] Basic Modbus RTU/TCP reading
+- [x] SparkplugB publisher with SQLite config
+- [x] Logging API
+- [ ] Web-based config editor
+- [ ] TLS cert file upload support
+- [ ] MQTT connection status UDT
+- [ ] Siemens S7 and OPC-UA integration
+- [ ] Docker build + auto-start service
+- [ ] Shift-based flow total calculation
+- [ ] **Switch to config files (TOML/YAML/JSON) instead of SQLite for Git-friendly versioning**
+- [ ] Generate `docs/` folder for GitHub Pages deployment
+
+---
+
+## 📜 License
+
+MIT License — see `LICENSE`.
+
+---
+
+## 👨‍💻 Author
+
+**Jacob Ramirez**  
+GitHub: [@jacob-ramirez-2020](https://github.com/jacob-ramirez-2020)  
+SCADA & IIoT Developer | SparkplugB Integrator | Cloud & Edge Architect
+
+---
+
+_Designed for Industrial IoT applications using Cirrus Link SparkplugB and Ignition._
