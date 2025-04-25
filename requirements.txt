@@ -1,0 +1,12 @@
+paho-mqtt
+protobuf
+psutil
+wmi
+pyserial
+geocoder
+pynmea2
+flask
+jsonify
+pytest
+pytest-cov
+dotenv

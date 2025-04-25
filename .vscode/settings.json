@@ -1,0 +1,10 @@
+{
+    "python.autoComplete.extraPaths": [],
+    "python.analysis.extraPaths": [
+        "./utils",
+        "./api",
+        "./src/utils",
+        "./src/sql",
+        "./client_libraries"
+    ]
+}
